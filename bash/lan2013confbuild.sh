@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Script that writes a expect that configures cisco 3500 switches for a lan party in school
-# Ports had to be configured one by one and as a good sysadmin, I wasnt taking any of it. 
-# Some switch had 24 and some 48 ports, hence $lastport
+# Script that writes a expect script that configures cisco 3500 switches for a lan party in school
+# Ports had to be configured one by one and as a good sysadmin, I wasn't taking any of it. 
+# Some switches had 24 and some 48 ports, hence $lastport
 
 
 # trap
