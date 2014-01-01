@@ -3,14 +3,16 @@
 # I have no idea why I wrote this
 
 
-# read -p "encrypt" $string
+read -p "Decrypt: " string
 
-key=ETAOINSHRDLUBCFGJMQPVWZYXK
-keylow=etaoinshrdlubcfgjmqpvwzyxk
+#key=ZABCDEFGHIJKLMNOPQRSTUVWXY
+#keylow=zabcdefghijklmnopqrstuvwxy
 
-echo
-echo
+# key=VWXYZABCDEFGHIJKLMNOPQRSTU
+# keylow=vwxyzabcdefghijklmnopqrstuvwxyz
 
+key=YZABCDEFGHIJKLMNOPQRSTUVWX
+keylow=yzabcdefghijklmnopqrstuvwx
 
 #echo $1 | tr "$key" "A-Z" | tr "$keylow" "a-z" 
-echo $1 | tr "A-Z" "$key" | tr "a-z" "$keylow" 
+echo $string | tr "A-Z" "$key" | tr "a-z" "$keylow" 
