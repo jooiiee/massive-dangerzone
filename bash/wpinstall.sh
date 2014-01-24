@@ -12,9 +12,20 @@ then
 	echo "Need to be root"
 	exit 1
 fi
+# Warn user
+echo "This script will install a LAMP server and wordpress to /var/www/html"
+echo "Files in /var/www/html will be overwritten!"
+
+read -n 1 -p "Continue? Y/N: " REPLY
+if [[ ! $REPLY =~ ^[Nn]$ ]]
+then
+	echo "Exiting"
+    exit 1
+fi
+
 
 # Download, install and configure LAMP 
-yum install -y httpd mysql mysql-server php
+yum install -y httpd mysql mysql-server php > /dev/null
 chconfig mysqld on
 chconfig httpd on
 service mysqld start
