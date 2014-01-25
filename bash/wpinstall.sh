@@ -50,12 +50,15 @@ chown -R www-data:www-data
 adduser root www-data
 
 # Set up sql for wordpress
-	# Generate password
-	mysqlpassword=$(dd if=/dev/urandom bs=1 count=32 2>/dev/null | base64 -w 0 | rev | cut -b 2- | rev)
+	# Generate passwords
+	mysqlpassword=$(dd if=/dev/urandom bs=1 count=32 2>/dev/null | base64 -w 0 | rev | cut -b 2- | rev) 
+	backuppassword=$(dd if=/dev/urandom bs=1 count=10 2>/dev/null | base64 -w 0 | rev | cut -b 2- | rev)
 
 	# Write command file
 	echo "CREATE USER \"wordpress\"@\"localhost\" IDENTIFIED BY '$(echo $mysqlpassword)';" > /tmp/setup.sql
 	echo 'GRANT ALL ON wordpress.* TO "wordpress"@"localhost";' >> /tmp/setup.sql
+	echo "CREATE USER \"backup\"@\"localhost\" IDENTIFIED BY '$(echo $backuppassword)';" > /tmp/setup.sql
+	echo 'GRANT SELECT ON wordpress.* TO "backup"@"localhost";' >> /tmp/setup.sql
 	echo "FLUSH PRIVILEGES;" >> /tmp/setup.sql
 
 	# Execute comand file
@@ -69,6 +72,9 @@ adduser root www-data
 	# Echo sql info to user
 	echo 'The database for wordpress is "wordpress"'
 	echo "The password for wordpress is \"$mysqlpassword\""
+	echo "The backup password is located in /root/backuppassword"
+	echo $backuppassword > /root/backuppassword
+	chmod 600 /root/backuppassword
 
 
 echo "If no errors were reported, wordpress core should be installed and ready for configuration"
