@@ -42,7 +42,7 @@ mysql_secure_installation
 # Download wordpress
 curl http://wordpress.org/latest.tar.gz >  /tmp/wordpress.tar.gz
 tar -xzf /tmp/wordpress.tar.gz -C /var/www/
-mv /var/www/wordpress /var/www/html
+mv /var/www/wordpress /var/www/html/
 
 # Adjust file permissions
 chmod -R 760 /var/www/http 
