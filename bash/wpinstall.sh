@@ -17,7 +17,7 @@ echo "This script will install a LAMP server and wordpress to /var/www/html"
 echo "Files in /var/www/html will be overwritten!"
 
 read -n 1 -p "Continue? Y/N: " REPLY
-if [[ $REPLY =~ ^[Nn]$ ]]
+if [[ $REPLY = ^[Nn]$ ]]
 then
 	echo "Exiting"
     exit 1
