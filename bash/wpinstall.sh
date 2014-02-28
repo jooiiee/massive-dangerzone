@@ -17,7 +17,7 @@ echo "This script will install a LAMP server and wordpress to /var/www/html"
 echo "Files in /var/www/html will be overwritten!"
 
 read -n 1 -p "Continue? Y/N: " REPLY
-if [[ ! $REPLY =~ ^[Nn]$ ]]
+if [[ $REPLY = ^[Nn]$ ]]
 then
 	echo "Exiting"
     exit 1
@@ -42,12 +42,12 @@ mysql_secure_installation
 # Download wordpress
 curl http://wordpress.org/latest.tar.gz >  /tmp/wordpress.tar.gz
 tar -xzf /tmp/wordpress.tar.gz -C /var/www/
-mv /var/www/wordpress /var/www/html
+mv -f /var/www/wordpress/ /var/www/htlm
 
 # Adjust file permissions
 chmod -R 760 /var/www/http 
-chown -R www-data:www-data
-adduser root www-data
+chown -R apache:apache /var/www/
+adduser root apache
 
 # Set up sql for wordpress
 	# Generate passwords
