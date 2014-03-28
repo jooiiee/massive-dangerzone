@@ -8,7 +8,7 @@
 
 		ip=$(host -t a $1 | cut -f 4 -d ' ')
 
-		if [ $ip == 195.74.38.155 ]
+		if [ $ip == $2 ]
 
 		then 
 			notify-send "DNS change done" "The DNS change is now complete, $1 now points to $2"
