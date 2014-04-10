@@ -11,7 +11,7 @@ trap SIGTERM
 
 # make start of expect file
 	
-	expect=`which expect`
+	expect=$(which expect)
 	echo "#!$expect" > lan2013conf.exp
 	echo "timeout 400" >> lan2013conf.exp
 
@@ -32,7 +32,7 @@ trap SIGTERM
 	echo 'expect "(config)#"' >> lan2013conf.exp
 	echo "send \"hostname $hostname\""  >> lan2013conf.exp
 	echo 'expect "(config)#"' >> lan2013conf.exp
-	echo 'send "enable secret level 5 sexmedfelix"'  >> lan2013conf.exp
+	echo 'send "enable secret level 5 P@ssword"'  >> lan2013conf.exp
 	echo 'expect "(config)#"' >> lan2013conf.exp
 	echo 'send "spa vlan1"'  >> lan2013conf.exp
 	echo 'expect "(config)#"' >> lan2013conf.exp
@@ -45,6 +45,8 @@ trap SIGTERM
 	echo 'send "interface vlan 20"'  >> lan2013conf.exp
 	echo 'expect "(config-if)#"' >> lan2013conf.exp
 	echo "send \"ip add $ip\""  >> lan2013conf.exp
+	echo 'expect "(config-if)#"' >> lan2013conf.exp
+	echo 'send "no shut"'  >> lan2013conf.exp
 	echo 'expect "(config-if)#"' >> lan2013conf.exp
 	echo 'send "exit"'  >> lan2013conf.exp
 	echo 'expect "(config)#"' >> lan2013conf.exp
