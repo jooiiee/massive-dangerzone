@@ -1,0 +1,86 @@
+body {
+  background-color: #0F4C81;
+  margin: 0px;
+  height: 100vh;
+}
+
+@keyframes colorchange
+{
+  0%   {color: red;}
+  20%  {color: orange;}
+  35%  {color: yellow;}
+  50%  {color: green;}
+  65% {color: blue;}
+  80% {color: violet;}
+  100% {color: red;}
+}
+
+@-webkit-keyframes colorchange 
+{
+  0%   {color: red;}
+  20%  {color: orange;}
+  35%  {color: yellow;}
+  50%  {color: green;}
+  65% {color: blue;}
+  80% {color: violet;}
+  100% {color: red;}
+}
+
+@keyframes marquee {
+    0%   { text-indent: 100% }
+    100% { text-indent: -500px }
+}
+
+
+.marquee {
+    width: auto;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    animation: marquee 8s linear infinite;
+}
+
+.text {
+    position: relative;
+    font: 68px 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+    letter-spacing: 3px
+}
+
+.text a {
+    color: red;
+    animation: colorchange 25s infinite; 
+    -webkit-animation: colorchange 25s infinite; 
+    position: relative;
+    font: 68px 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+    letter-spacing: 3px;
+    text-decoration: none;
+}
+
+.text:after, .text::after {
+    z-index: 1;
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 1em; height: 2em;
+    background-image: linear-gradient(90deg, #0F4C81 30%, rgba(255,255,255,0));
+}
+
+.text:before, .text::before {
+    z-index: 1;
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 1em; height: 2em;
+    background-image: linear-gradient(-90deg, #0F4C81 30%, rgba(255,255,255,0));
+}
+
+.text a:hover {
+    color: white;
+}
+
+.vertical-center {
+  top: 30%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
